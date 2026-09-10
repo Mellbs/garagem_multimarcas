@@ -4,13 +4,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // MENU MOBILE
     // ==========================================
 
-    const mobileMenu = document.querySelector('.mobile-menu');
+// ==========================================
+// MENU MOBILE
+// ==========================================
 
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', () => {
-            alert('Menu Mobile - Implementar navegação lateral aqui.');
-        });
-    }
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileNav = document.querySelector('.mobile-nav');
+const mobileClose = document.querySelector('.mobile-close');
+const mobileOverlay = document.querySelector('.mobile-overlay');
+
+
+// Abrir menu
+if (mobileMenu && mobileNav) {
+
+    mobileMenu.addEventListener('click', () => {
+
+        mobileNav.classList.add('active');
+        mobileOverlay.classList.add('active');
+
+        document.body.style.overflow = 'hidden';
+
+    });
+
+}
+
+
+// Fechar menu pelo X
+if (mobileClose) {
+
+    mobileClose.addEventListener('click', () => {
+
+        closeMobileMenu();
+
+    });
+
+}
+
+
+// Fechar clicando no fundo escuro
+if (mobileOverlay) {
+
+    mobileOverlay.addEventListener('click', () => {
+
+        closeMobileMenu();
+
+    });
+
+}
+
+
+// Fechar ao clicar em algum link
+const mobileLinks = document.querySelectorAll(
+    '.mobile-nav-links a'
+);
+
+mobileLinks.forEach(link => {
+
+    link.addEventListener('click', () => {
+
+        closeMobileMenu();
+
+    });
+
+});
+
+
+// Função para fechar
+function closeMobileMenu() {
+
+    mobileNav.classList.remove('active');
+    mobileOverlay.classList.remove('active');
+
+    document.body.style.overflow = '';
+
+}
 
 
     // ==========================================
